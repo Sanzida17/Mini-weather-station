@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🌤️ Raspberry Pi Weather Station</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        h1 { color: #003366; }
+        ul { list-style-type: none; padding: 0; font-size: 18px; }
+        li { margin: 5px 0; }
+        a { text-decoration: none; color: #0055aa; }
+    </style>
+</head>
+<body>
+    <h1>🌤️ Raspberry Pi Weather Station API</h1>
+    <p>Visit <a href="/dashboard">/dashboard</a>, 
+    <a href="/table">/table</a>, 
+    <a href="/temperature">/temperature</a>, 
+    <a href="/humidity">/humidity</a>, 
+    <a href="/pressure">/pressure</a></p>
+
+    <h2>📊 Average Sensor Readings:</h2>
+    <ul>
+        <li><strong>Temperature:</strong> {{ avg_temp }} °C</li>
+        <li><strong>Humidity:</strong> {{ avg_hum }} %</li>
+        <li><strong>Pressure:</strong> {{ avg_pres }} hPa</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📋 Weather Table</title>
+    <style>
+        table { border-collapse: collapse; width: 80%; margin: auto; }
+        th, td { border: 1px solid #999; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">📋 Latest Weather Data</h2>
+    <table>
+        <tr>
+            <th>Timestamp</th>
+            <th>Temperature (°C)</th>
+            <th>Humidity (%)</th>
+            <th>Pressure (hPa)</th>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row['timestamp'] }}</td>
+            <td>{{ row['temperature'] }}</td>
+            <td>{{ row['humidity'] }}</td>
+            <td>{{ row['pressure'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

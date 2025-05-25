@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📈 Weather Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+</head>
+<body>
+    <h2 style="text-align:center;">📊 Live Weather Chart</h2>
+    <canvas id="weatherChart" width="1000" height="400"></canvas>
+
+    <script>
+        const labels = {{ labels | safe }};
+        const tempData = {{ temperatures | safe }};
+        const humidityData = {{ humidities | safe }};
+        const pressureData = {{ pressures | safe }};
+
+        const ctx = document.getElementById('weatherChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Temperature (°C)',
+                        borderColor: 'red',
+                        data: tempData,
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Humidity (%)',
+                        borderColor: 'blue',
+                        data: humidityData,
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Pressure (hPa)',
+                        borderColor: 'green',
+                        data: pressureData,
+                        fill: false,
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    zoom: {
+                        pan: {
+                            enabled: true,
+                            mode: 'x',
+                        },
+                        zoom: {
+                            wheel: {
+                                enabled: true,
+                            },
+                            pinch: {
+                                enabled: true
+                            },
+                            mode: 'x',
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            autoSkip: true,
+                            maxRotation: 45,
+                            minRotation: 45,
+                        }
+                    },
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
